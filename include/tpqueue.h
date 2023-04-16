@@ -16,6 +16,12 @@ class TPQueue {
     ~TPQueue() {
         delete[] arr;
     }
+    bool isEmpty() const {
+        return count == 0;
+    }
+    bool isFull() const {
+        return count == size;
+    }
     void push(const T& item) {
         if (isFull()) {
             throw std::string("Full");
@@ -27,7 +33,7 @@ class TPQueue {
                     arr[j % size] = arr[j - 1];
                 }
             }
-            arr[1 % size] = item;
+            arr[i % size] = item;
             count++;
             end++;
         }
@@ -39,12 +45,6 @@ class TPQueue {
             count--;
             return arr[begin++ % size];
         }
-    }
-    bool isEmpty() const {
-        return count == 0;
-    }
-    bool isFull() const {
-        return count == size;
     }
 };
 
