@@ -22,13 +22,15 @@ class TPQueue {
         } else {
             int i = end;
             for (int j = end; j > begin; j--) {
-                i = j - 1;
-                arr[j % size] = arr[j - 1];
+                if (arr[j - 1].prior < item.prior) {
+                    i = j - 1;
+                    arr[j % size] = arr[j - 1];
+                }
             }
+            arr[1 % size] = item;
+            count++;
+            end++;
         }
-        arr[1 % size] = item;
-        count++;
-        end++;
     }
     const T& pop() {
         if (isEmpty()) {
