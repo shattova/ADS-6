@@ -10,10 +10,10 @@ class TPQueue {
     int begin, end, count;
 
  public:
-    TQueue() : begin(0), end(0), count(0) {
+    TPQueue() : begin(0), end(0), count(0) {
         arr = new T[size];
     }
-    ~TQueue() {
+    ~TPQueue() {
         delete[] arr;
     }
     void push(const T& item) {
@@ -33,8 +33,7 @@ class TPQueue {
     const T& pop() {
         if (isEmpty()) {
             throw std::string("Empty");
-        }
-        else {
+        } else {
             count--;
             return arr[begin++ % size];
         }
